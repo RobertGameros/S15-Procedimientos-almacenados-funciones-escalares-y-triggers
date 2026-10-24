@@ -5,6 +5,8 @@ __pycache__/
 
 # Local Word document (no subir al repositorio remoto)
 *.docx
+~$*
+*.tmp
 
 # IDEs
 .idea/
