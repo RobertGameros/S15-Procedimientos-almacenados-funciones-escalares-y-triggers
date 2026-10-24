@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: chinook_postgres18
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ROBERT
+      POSTGRES_PASSWORD: ROBERT1710
+      POSTGRES_DB: chinook
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata_tarea7:/var/lib/postgresql
+
+volumes:
+  pgdata_tarea7:
+    driver: local

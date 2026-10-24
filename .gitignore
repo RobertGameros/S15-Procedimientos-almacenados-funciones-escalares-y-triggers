@@ -1,0 +1,15 @@
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Local Word document (no subir al repositorio remoto)
+*.docx
+
+# IDEs
+.idea/
+.vscode/
+
+# OS artifacts
+Thumbs.db
+Desktop.ini

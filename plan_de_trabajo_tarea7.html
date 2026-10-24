@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Trabajo y Plantilla de Evidencias - Tarea No. 7 Base de Datos 1</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-bg: #eff6ff;
+            --secondary: #0f766e;
+            --secondary-bg: #f0fdfa;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --border: #e2e8f0;
+            --bg-card: #ffffff;
+            --bg-page: #f8fafc;
+            --warning-bg: #fffbeb;
+            --warning-border: #f59e0b;
+            --danger-bg: #fef2f2;
+            --danger-border: #ef4444;
+            --success-bg: #f0fdf4;
+            --success-border: #22c55e;
+            --code-bg: #1e293b;
+            --code-color: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+        }
+
+        /* Encabezado */
+        header {
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .badge-header {
+            display: inline-block;
+            background: var(--primary);
+            color: #ffffff;
+            padding: 0.35rem 0.85rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            line-height: 1.25;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 1.2rem;
+        }
+
+        .metadata-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            background: var(--primary-bg);
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            border: 1px solid #bfdbfe;
+            font-size: 0.92rem;
+        }
+
+        .metadata-item strong {
+            color: var(--primary);
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Tipografía y secciones */
+        h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p, ul, ol {
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Alertas y Callouts */
+        .callout {
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            margin: 1.25rem 0;
+            border-left: 5px solid;
+            font-size: 0.95rem;
+        }
+
+        .callout.info {
+            background-color: var(--primary-bg);
+            border-left-color: var(--primary-light);
+            color: #1e40af;
+        }
+
+        .callout.warning {
+            background-color: var(--warning-bg);
+            border-left-color: var(--warning-border);
+            color: #92400e;
+        }
+
+        .callout.success {
+            background-color: var(--success-bg);
+            border-left-color: var(--success-border);
+            color: #166534;
+        }
+
+        .callout.danger {
+            background-color: var(--danger-bg);
+            border-left-color: var(--danger-border);
+            color: #991b1b;
+        }
+
+        /* Tablas */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.92rem;
+        }
+
+        th, td {
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        /* Bloques de código */
+        .code-container {
+            position: relative;
+            margin: 1rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--code-bg);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 0.5rem 1rem;
+            font-size: 0.82rem;
+            font-family: monospace;
+            border-bottom: 1px solid #334155;
+        }
+
+        .copy-btn {
+            background: #334155;
+            color: #f8fafc;
+            border: none;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-light);
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-color);
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: Consolas, "Courier New", Courier, monospace;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", Courier, monospace;
+            background-color: #e2e8f0;
+            color: #0f172a;
+            padding: 0.15rem 0.35rem;
+            border-radius: 4px;
+            font-size: 0.88em;
+        }
+
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        /* Tarjetas de Ficha de Evidencia */
+        .evidence-card {
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            page-break-inside: avoid;
+        }
+
+        .evidence-card.highlight {
+            border-left: 6px solid var(--primary-light);
+        }
+
+        .case-badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .evidence-title {
+            font-size: 1.25rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .evidence-instructions {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+            padding: 0.85rem 1rem;
+            border-radius: 6px;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        .evidence-instructions strong {
+            color: #0369a1;
+        }
+
+        .data-comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .data-comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .data-box {
+            background: #fdfdfd;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 0.75rem;
+        }
+
+        .data-box.before {
+            border-top: 3px solid #f97316;
+        }
+
+        .data-box.after {
+            border-top: 3px solid #10b981;
+        }
+
+        .data-box h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .data-box.before h4 { color: #c2410c; }
+        .data-box.after h4 { color: #047857; }
+
+        .results-section {
+            margin: 1rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .results-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .result-box {
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .expected-box {
+            background: #f0fdfa;
+            border: 1px solid #99f6e4;
+        }
+        .expected-box strong { color: #0f766e; }
+
+        .obtained-box {
+            background: #fefce8;
+            border: 1px solid #fef08a;
+        }
+        .obtained-box strong { color: #854d0e; }
+
+        /* Placeholder de Imagen */
+        .photo-placeholder {
+            border: 2px dashed #94a3b8;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            background-color: #f8fafc;
+            margin: 1rem 0;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+        }
+
+        .photo-placeholder:hover {
+            border-color: var(--primary-light);
+            background-color: #eff6ff;
+        }
+
+        .photo-icon {
+            font-size: 2.2rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .photo-label {
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .photo-sublabel {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 0.25rem;
+        }
+
+        .photo-preview {
+            max-width: 100%;
+            max-height: 480px;
+            border-radius: 6px;
+            display: none;
+            margin-top: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.65rem 0.5rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-top: 0.25rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Botón de impresión */
+        .action-bar {
+            position: sticky;
+            top: 1rem;
+            z-index: 100;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
+            gap: 0.75rem;
+        }
+
+        .btn-action {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: background 0.2s;
+        }
+
+        .btn-action:hover {
+            background-color: #1e40af;
+        }
+
+        .btn-secondary {
+            background-color: #475569;
+        }
+        .btn-secondary:hover {
+            background-color: #334155;
+        }
+
+        /* Estilos de Impresión / PDF */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                color: black;
+            }
+
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .action-bar, .copy-btn {
+                display: none !important;
+            }
+
+            .evidence-card {
+                page-break-inside: avoid;
+                border: 1px solid #999;
+                box-shadow: none;
+                margin: 1.5rem 0;
+            }
+
+            .photo-placeholder {
+                min-height: 160px;
+                border: 1px dashed #666;
+                background: transparent;
+            }
+
+            h2, h3 {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Barra de acciones superior -->
+    <div class="action-bar">
+        <button class="btn-action btn-secondary" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑ Ir Arriba</button>
+        <button class="btn-action" onclick="window.print();">🖨️ Exportar a PDF / Imprimir</button>
+    </div>
+
+    <!-- Encabezado Principal -->
+    <header>
+        <span class="badge-header">Base de Datos 1 • VI Ciclo</span>
+        <h1>Plan de Trabajo y Plantilla de Documentación</h1>
+        <p class="subtitle">Tarea No. 7: Lógica de Negocio y Trazabilidad en PostgreSQL (Chinook Database)</p>
+
+        <div class="metadata-grid">
+            <div class="metadata-item">
+                <strong>Estudiante</strong>
+                <span contenteditable="true" style="border-bottom: 1px dotted #2563eb;">[Clic aquí para escribir tu Nombre Completo]</span>
+            </div>
+            <div class="metadata-item">
+                <strong>Carné / ID</strong>
+                <span contenteditable="true" style="border-bottom: 1px dotted #2563eb;">[Ingresa tu Número de Carné]</span>
+            </div>
+            <div class="metadata-item">
+                <strong>Valor / Modalidad</strong>
+                <span>5 Puntos • Modalidad Individual</span>
+            </div>
+            <div class="metadata-item">
+                <strong>Repositorio GitHub</strong>
+                <span contenteditable="true" style="border-bottom: 1px dotted #2563eb;">[Enlace https://github.com/usuario/tarea7-bd1]</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Resumen Ejecutivo del Caso -->
+    <section>
+        <h2>📋 1. Descripción y Objetivos del Proyecto</h2>
+        <p>
+            El propósito de esta práctica es implementar y comprobar lógica de negocio dentro del motor de base de datos 
+            <strong>PostgreSQL</strong> mediante la articulación desacoplada de:
+        </p>
+        <ul>
+            <li><strong>Una función escalar pura:</strong> Para calcular ajustes porcentuales sin efectos colaterales ni mutación de tablas.</li>
+            <li><strong>Un procedimiento almacenado:</strong> Para orquestar validaciones de existencia, llamar la función escalar y actualizar el precio unitario del catálogo.</li>
+            <li><strong>Un disparador (Trigger) y su función asociada:</strong> Para auditar automáticamente cualquier cambio efectivo de precio con fecha, hora y usuario activo.</li>
+        </ul>
+
+        <div class="callout warning">
+            <strong>⚠️ Regla Crítica de Negocio:</strong> No se deben modificar precios históricos en la tabla de facturación (<code>"InvoiceLine"</code>). 
+            El cambio afecta <strong>únicamente al catálogo activo de pistas (<code>"Track"</code>)</strong>. Además, se debe trabajar estrictamente en una 
+            <strong>copia de la base de datos Chinook</strong> para preservar la base original sin modificaciones.
+        </div>
+    </section>
+
+    <!-- Requerimiento 1: Tabla de Arquitectura de Objetos -->
+    <section>
+        <h2>🏗️ 2. Arquitectura de Objetos en Base de Datos</h2>
+        <p>
+            A continuación se presenta la tabla técnica que especifica formalmente cada componente desarrollado en el esquema, 
+            detallando sus firmas, parámetros, resultados esperados y responsabilidades únicas asignadas:
+        </p>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre del Objeto</th>
+                        <th>Tipo en PostgreSQL</th>
+                        <th>Parámetros de Entrada</th>
+                        <th>Resultado o Retorno</th>
+                        <th>Responsabilidad Exclusiva</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong><code>calcular_precio_ajustado</code></strong></td>
+                        <td>Función Escalar (<code>FUNCTION</code>)</td>
+                        <td>
+                            <code>precio_actual NUMERIC</code><br>
+                            <code>porcentaje NUMERIC</code>
+                        </td>
+                        <td><code>NUMERIC(10,2)</code> (Valor escalar puro)</td>
+                        <td>
+                            Calcular matemáticamente <code>ROUND(precio * (1 + %/100), 2)</code>. 
+                            Validar que los parámetros no sean NULL, que el precio inicial sea &gt; 0, 
+                            que el porcentaje esté entre [-50, 100], y que el precio resultante sea &gt; 0. 
+                            <strong>No modifica ninguna tabla.</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong><code>aplicar_ajuste_precio</code></strong></td>
+                        <td>Procedimiento Almacenado (<code>CREATE PROCEDURE</code>)</td>
+                        <td>
+                            <code>id_producto INTEGER</code><br>
+                            <code>porcentaje NUMERIC</code>
+                        </td>
+                        <td><code>VOID</code> (Modifica datos en <code>"Track"</code>)</td>
+                        <td>
+                            Validar que <code>id_producto</code> no sea NULL y exista en el catálogo. Obtener el precio actual 
+                            y <strong>reutilizar obligatoriamente la función escalar</strong> para calcular el nuevo precio. 
+                            Ejecutar el <code>UPDATE</code> exclusivamente sobre la pista solicitada. 
+                            <strong>No inserta en auditoría</strong> (responsabilidad del trigger).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong><code>fn_auditar_cambio_precio</code></strong></td>
+                        <td>Función de Soporte de Trigger</td>
+                        <td><em>Ninguno</em> (Accede a registros contextuales <code>OLD</code> y <code>NEW</code>)</td>
+                        <td><code>TRIGGER</code></td>
+                        <td>
+                            Evaluar si hubo un cambio real mediante <code>NEW."UnitPrice" IS DISTINCT FROM OLD."UnitPrice"</code>. 
+                            Si hubo cambio efectivo, insertar la tupla en la tabla <code>auditoria_precios_track</code> con 
+                            <code>CURRENT_TIMESTAMP</code> y <code>CURRENT_USER</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong><code>trg_auditar_cambio_precio</code></strong></td>
+                        <td>Disparador a nivel de fila (<code>TRIGGER AFTER UPDATE</code>)</td>
+                        <td>Evento: <code>AFTER UPDATE OF "UnitPrice" ON "Track" FOR EACH ROW</code></td>
+                        <td>Invoca a <code>fn_auditar_cambio_precio()</code></td>
+                        <td>
+                            Interceptar de forma transparente cualquier actualización sobre la columna de precio, ya sea 
+                            originada por un <code>CALL</code> del procedimiento o por un <code>UPDATE</code> SQL directo.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong><code>auditoria_precios_track</code></strong></td>
+                        <td>Tabla Relacional de Auditoría</td>
+                        <td><em>Estructura de almacenamiento</em></td>
+                        <td>Persistencia histórica de cambios</td>
+                        <td>
+                            Almacenar de forma inmutable: <code>id_auditoria</code> (PK), <code>id_pista</code>, 
+                            <code>precio_anterior</code>, <code>precio_nuevo</code>, <code>fecha_cambio</code> y <code>usuario_db</code>.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Paso a Paso del Procedimiento -->
+    <section>
+        <h2>🛠️ 3. Procedimiento Detallado Paso a Paso</h2>
+
+        <!-- Fase 0 -->
+        <h3>Fase 0: Preparación de la Copia de la Base de Datos Chinook</h3>
+        <p>Para no afectar la base de datos original, se debe crear una base de datos de práctica aislada. Dispones de dos formas:</p>
+        
+        <div class="callout info">
+            <strong>Opción A (Recomendada si ya tienes Chinook montada): Clonación por comando</strong>
+            <p>Abre tu consola de comandos o terminal de PostgreSQL (<code>psql</code>) y ejecuta:</p>
+            <code>CREATE DATABASE chinook_practica WITH TEMPLATE chinook OWNER postgres;</code>
+            <p>O desde la interfaz gráfica de <strong>pgAdmin 4</strong>: Clic derecho en <em>Databases</em> &gt; <em>Create</em> &gt; <em>Database...</em> &gt; Nombre: <code>chinook_practica</code>, en la pestaña <em>Definition</em> selecciona Template: <code>chinook</code>.</p>
+        </div>
+
+        <div class="callout info">
+            <strong>Opción B: Creación desde el script oficial de GitHub</strong>
+            <p>Fuente oficial documentada: <a href="https://github.com/lerocha/chinook-database" target="_blank">https://github.com/lerocha/chinook-database</a></p>
+            <p>Archivo exacto: <code>Chinook_PostgreSql.sql</code>.</p>
+            <p>En pgAdmin: Crea la base de datos <code>chinook_practica</code> vacía, abre el <em>Query Tool</em> sobre ella, carga el archivo <code>Chinook_PostgreSql.sql</code> y ejecútalo con <kbd>F5</kbd>.</p>
+        </div>
+
+        <!-- Fase 1 -->
+        <h3>Fase 1: Preparación y Tabla de Auditoría (<code>sql/01_preparacion.sql</code>)</h3>
+        <p>
+            Conéctate a <code>chinook_practica</code>. Este script verifica la versión instalada de PostgreSQL, inspecciona las 
+            columnas de la tabla <code>"Track"</code> y crea la tabla <code>auditoria_precios_track</code>.
+        </p>
+
+        <div class="code-container">
+            <div class="code-header">
+                <span>sql/01_preparacion.sql</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copiar SQL</button>
+            </div>
+            <pre><code>-- 1. Documentar versión de PostgreSQL
+SELECT version() AS version_postgresql;
+
+-- 2. Inspección del catálogo "Track"
+SELECT column_name, data_type, is_nullable
+FROM information_schema.columns
+WHERE table_name IN ('Track', 'track')
+  AND column_name IN ('TrackId', 'track_id', 'UnitPrice', 'unit_price', 'Name');
+
+-- 3. Creación de tabla de auditoría con tipos NUMERIC adecuados
+DROP TABLE IF EXISTS auditoria_precios_track CASCADE;
+
+CREATE TABLE auditoria_precios_track (
+    id_auditoria     SERIAL PRIMARY KEY,
+    id_pista         INTEGER NOT NULL,
+    precio_anterior  NUMERIC(10, 2) NOT NULL,
+    precio_nuevo     NUMERIC(10, 2) NOT NULL,
+    fecha_cambio     TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    usuario_db       VARCHAR(100) NOT NULL DEFAULT CURRENT_USER
+);
+
+SELECT * FROM auditoria_precios_track;</code></pre>
+        </div>
+
+        <!-- Fase 2 -->
+        <h3>Fase 2: Función Escalar de Cálculo de Precio (<code>sql/02_funcion_escalar.sql</code>)</h3>
+        <p>
+            Implementa la lógica pura de cálculo matemático sin afectar ninguna tabla, con validación defensiva de errores.
+        </p>
+
+        <div class="code-container">
+            <div class="code-header">
+                <span>sql/02_funcion_escalar.sql</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copiar SQL</button>
+            </div>
+            <pre><code>CREATE OR REPLACE FUNCTION calcular_precio_ajustado(
+    precio_actual NUMERIC, 
+    porcentaje    NUMERIC
+)
+RETURNS NUMERIC AS $$
+DECLARE
+    v_precio_calculado NUMERIC(12, 4);
+    v_precio_final     NUMERIC(10, 2);
+BEGIN
+    -- Rechazo de NULLs
+    IF precio_actual IS NULL THEN
+        RAISE EXCEPTION 'Parámetro inválido: El precio actual no puede ser nulo (NULL).'
+            USING ERRCODE = 'check_violation';
+    END IF;
+
+    IF porcentaje IS NULL THEN
+        RAISE EXCEPTION 'Parámetro inválido: El porcentaje de ajuste no puede ser nulo (NULL).'
+            USING ERRCODE = 'check_violation';
+    END IF;
+
+    -- Validación de precio inicial > 0
+    IF precio_actual <= 0 THEN
+        RAISE EXCEPTION 'Valor fuera de rango: El precio actual (%), debe ser estrictamente mayor que cero.', precio_actual
+            USING ERRCODE = 'numeric_value_out_of_range';
+    END IF;
+
+    -- Validación de porcentaje [-50, 100]
+    IF porcentaje < -50 OR porcentaje > 100 THEN
+        RAISE EXCEPTION 'Porcentaje no permitido: El porcentaje (%) está fuera del rango [-50, 100].', porcentaje
+            USING ERRCODE = 'numeric_value_out_of_range';
+    END IF;
+
+    -- Fórmula matemática y redondeo a 2 decimales
+    v_precio_calculado := precio_actual * (1.0 + (porcentaje / 100.0));
+    v_precio_final := ROUND(v_precio_calculado, 2);
+
+    -- Rechazo de resultado redondeado <= 0
+    IF v_precio_final <= 0 THEN
+        RAISE EXCEPTION 'Resultado inválido: El precio ajustado resultante (%), debe ser mayor que cero.', v_precio_final
+            USING ERRCODE = 'check_violation';
+    END IF;
+
+    RETURN v_precio_final;
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;</code></pre>
+        </div>
+
+        <!-- Fase 3 -->
+        <h3>Fase 3: Procedimiento Almacenado de Aplicación (<code>sql/03_procedimiento.sql</code>)</h3>
+        <p>
+            Valida la existencia del producto en el catálogo, llama a <code>calcular_precio_ajustado</code> y realiza la 
+            actualización.
+        </p>
+
+        <div class="code-container">
+            <div class="code-header">
+                <span>sql/03_procedimiento.sql</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copiar SQL</button>
+            </div>
+            <pre><code>CREATE OR REPLACE PROCEDURE aplicar_ajuste_precio(
+    id_producto INTEGER, 
+    porcentaje  NUMERIC
+)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    v_precio_actual NUMERIC(10, 2);
+    v_precio_nuevo  NUMERIC(10, 2);
+BEGIN
+    IF id_producto IS NULL THEN
+        RAISE EXCEPTION 'Parámetro inválido: El identificador del producto no puede ser nulo (NULL).'
+            USING ERRCODE = 'check_violation';
+    END IF;
+
+    IF porcentaje IS NULL THEN
+        RAISE EXCEPTION 'Parámetro inválido: El porcentaje de ajuste no puede ser nulo (NULL).'
+            USING ERRCODE = 'check_violation';
+    END IF;
+
+    -- Comprobar existencia en catálogo
+    SELECT "UnitPrice" INTO v_precio_actual
+    FROM "Track"
+    WHERE "TrackId" = id_producto;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'Producto no encontrado: No existe ninguna pista con identificador (TrackId = %).', id_producto
+            USING ERRCODE = 'data_exception';
+    END IF;
+
+    -- Reutilización obligatoria de la función escalar
+    v_precio_nuevo := calcular_precio_ajustado(v_precio_actual, porcentaje);
+
+    -- Actualización exclusiva
+    UPDATE "Track"
+    SET "UnitPrice" = v_precio_nuevo
+    WHERE "TrackId" = id_producto;
+
+    RAISE NOTICE 'Ajuste completado en TrackId %: Anterior = %, Nuevo = %', id_producto, v_precio_actual, v_precio_nuevo;
+END;
+$$;</code></pre>
+        </div>
+
+        <!-- Fase 4 -->
+        <h3>Fase 4: Trigger y Función Disparadora (<code>sql/04_trigger_y_funcion.sql</code>)</h3>
+        <p>
+            Garantiza la trazabilidad automática comparando el estado <code>OLD</code> y <code>NEW</code> con <code>IS DISTINCT FROM</code>.
+        </p>
+
+        <div class="code-container">
+            <div class="code-header">
+                <span>sql/04_trigger_y_funcion.sql</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copiar SQL</button>
+            </div>
+            <pre><code>CREATE OR REPLACE FUNCTION fn_auditar_cambio_precio()
+RETURNS TRIGGER 
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Comparación estricta de cambio real
+    IF NEW."UnitPrice" IS DISTINCT FROM OLD."UnitPrice" THEN
+        INSERT INTO auditoria_precios_track (
+            id_pista,
+            precio_anterior,
+            precio_nuevo,
+            fecha_cambio,
+            usuario_db
+        ) VALUES (
+            OLD."TrackId",
+            OLD."UnitPrice",
+            NEW."UnitPrice",
+            CURRENT_TIMESTAMP,
+            CURRENT_USER
+        );
+    END IF;
+
+    RETURN NEW;
+END;
+$$;
+
+DROP TRIGGER IF EXISTS trg_auditar_cambio_precio ON "Track";
+
+CREATE TRIGGER trg_auditar_cambio_precio
+AFTER UPDATE OF "UnitPrice" ON "Track"
+FOR EACH ROW
+EXECUTE FUNCTION fn_auditar_cambio_precio();</code></pre>
+        </div>
+    </section>
+
+    <!-- Requerimiento 2: Fichas de Capturas de Evidencia -->
+    <section>
+        <h2>📸 4. Fichas de Capturas de Evidencia de Resultados</h2>
+        <p>
+            A continuación se presentan las fichas detalladas para cada caso de prueba requerido por la guía de la tarea. 
+            Cada ficha indica exactamente qué comando ejecutar, a qué elemento tomarle captura de pantalla, el resultado 
+            esperado y el espacio para documentar el resultado obtenido con la imagen correspondiente.
+        </p>
+
+        <!-- Evidencia 0.1 -->
+        <div class="evidence-card highlight">
+            <span class="case-badge">Preparación • Entorno</span>
+            <div class="evidence-title">Evidencia P.1: Versión de PostgreSQL y Copia de Base de Datos</div>
+            
+            <div class="evidence-instructions">
+                <strong>¿A qué tomarle captura?:</strong> A la ventana de pgAdmin o consola psql donde se observe el resultado de 
+                <code>SELECT version();</code> y el árbol de conexiones mostrando que la base de datos activa es la copia 
+                (ej. <code>chinook_practica</code>).
+            </div>
+
+            <div class="results-section">
+                <div class="result-box expected-box">
+                    <strong>Resultado Esperado:</strong> Una cadena indicando la versión de PostgreSQL instalada (ej. PostgreSQL 16.x / 17.x / 18.x) y conexión exitosa a la copia.
+                </div>
+                <div class="result-box obtained-box">
+                    <strong>Resultado Obtenido:</strong> 
+                    <span contenteditable="true" style="display:block; margin-top:4px;">Se visualizó PostgreSQL versión [Indicar versión exacta obtenida] conectada en base de datos chinook_practica.</span>
+                </div>
+            </div>
+
+            <div class="photo-placeholder" onclick="triggerFileInput(this)">
+                <input type="file" class="file-input" accept="image/*" onchange="previewImage(this)">
+                <div class="photo-icon">📷</div>
+                <div class="photo-label">Haz clic aquí para adjuntar la Captura de la Versión de PostgreSQL</div>
+                <div class="photo-sublabel">(O pega tu imagen aquí si estás editando el documento)</div>
+                <img class="photo-preview" alt="Evidencia Versión PostgreSQL">
+            </div>
+        </div>
+
+        <!-- Evidencia 0.2 -->
+        <div class="evidence-card highlight">
+            <span class="case-badge">Preparación • Auditoría</span>
+            <div class="evidence-title">Evidencia P.2: Creación de la Tabla de Auditoría</div>
+            
+            <div class="evidence-instructions">
+                <strong>¿A qué tomarle captura?:</strong> A la ejecución de <code>sql/01_preparacion.sql</code> mostrando el mensaje de 
+                <code>CREATE TABLE</code> exitoso y la consulta <code>SELECT * FROM auditoria_precios_track;</code> con 0 filas.
+            </div>
+
+            <div class="results-section">
+                <div class="result-box expected-box">
+                    <strong>Resultado Esperado:</strong> Tabla <code>auditoria_precios_track</code> creada con sus columnas: <code>id_auditoria</code>, <code>id_pista</code>, <code>precio_anterior</code>, <code>precio_nuevo</code>, <code>fecha_cambio</code>, <code>usuario_db</code>.
+                </div>
+                <div class="result-box obtained-box">
+                    <strong>Resultado Obtenido:</strong> 
+                    <span contenteditable="true" style="display:block; margin-top:4px;">Tabla de auditoría creada satisfactoriamente con claves y tipos NUMERIC(10,2).</span>
+                </div>
+            </div>
+
+            <div class="photo-placeholder" onclick="triggerFileInput(this)">
+                <input type="file" class="file-input" accept="image/*" onchange="previewImage(this)">
+                <div class="photo-icon">📷</div>
+                <div class="photo-label">Haz clic aquí para adjuntar la Captura de la Tabla de Auditoría</div>
+                <div class="photo-sublabel">Muestra la estructura de la tabla y su consulta inicial vacía</div>
+                <img class="photo-preview" alt="Evidencia Tabla Auditoría">
+            </div>
+        </div>
+
+        <!-- CASO 1 -->
+        <div class="evidence-card">
+            <span class="case-badge">Caso 1</span>
+            <div class="evidence-title">Función Escalar: Aumento (+10%) y Reducción (-50%)</div>
+            
+            <p><strong>Comando ejecutado:</strong></p>
+            <code>SELECT calcular_precio_ajustado(10.00, 10.00) AS aumento, calcular_precio_ajustado(10.00, -50.00) AS reduccion;</code>
+
+            <div class="evidence-instructions">
+                <strong>¿A qué tomarle captura?:</strong> A la pestaña <em>Data Output</em> de la consulta SELECT ejecutando ambos cálculos. 
+                Debe verse el nombre de las columnas y los valores resultantes.
+            </div>
+
+            <div class="results-section">
+                <div class="result-box expected-box">
+                    <strong>Resultado Esperado:</strong><br>
+                    • Para 10.00 con +10%: <code>11.00</code><br>
+                    • Para 10.00 con -50%: <code>5.00</code>
+                </div>
+                <div class="result-box obtained-box">
+                    <strong>Resultado Obtenido:</strong><br>
+                    <span contenteditable="true">La función retornó exactamente 11.00 y 5.00 con redondeo correcto a dos decimales.</span>
+                </div>
+            </div>
+
+            <div class="photo-placeholder" onclick="triggerFileInput(this)">
+                <input type="file" class="file-input" accept="image/*" onchange="previewImage(this)">
+                <div class="photo-icon">📷</div>
+                <div class="photo-label">Haz clic aquí para adjuntar la Captura del Caso 1</div>
+                <div class="photo-sublabel">Captura del Query Tool mostrando SELECT de 11.00 y 5.00</div>
+                <img class="photo-preview" alt="Evidencia Caso 1">
+            </div>
+        </div>
+
+        <!-- CASO 2 -->
+        <div class="evidence-card">
+            <span class="case-badge">Caso 2</span>
+            <div class="evidence-title">Función Escalar: Validación de Entradas Inválidas</div>
+            
+            <p><strong>Comandos ejecutados:</strong> Pruebas independientes para parámetros NULL, precio &le; 0 y porcentaje fuera de [-50, 100].</p>
+
+            <div class="evidence-instructions">
+                <strong>¿A qué tomarle captura?:</strong> A la pestaña de <em>Messages</em> o salida de error en la consola psql, donde se lean 
+                claramente los mensajes de excepción personalizados lanzados por la función.
+            </div>
+
+            <div class="results-section">
+                <div class="result-box expected-box">
+                    <strong>Resultado Esperado:</strong> Excepciones claras de tipo <code>check_violation</code> y <code>numeric_value_out_of_range</code> indicando el motivo exacto del rechazo.
+                </div>
+                <div class="result-box obtained-box">
+                    <strong>Resultado Obtenido:</strong><br>
+                    <span contenteditable="true">Se capturaron todos los errores: rechazo de precio NULL, precio &le; 0, y porcentajes como -60% o 105%.</span>
+                </div>
+            </div>
+
+            <div class="photo-placeholder" onclick="triggerFileInput(this)">
+                <input type="file" class="file-input" accept="image/*" onchange="previewImage(this)">
+                <div class="photo-icon">📷</div>
+                <div class="photo-label">Haz clic aquí para adjuntar la Captura del Caso 2 (Errores controlados)</div>
+                <div class="photo-sublabel">Captura del panel de Mensajes con las excepciones RAISE</div>
+                <img class="photo-preview" alt="Evidencia Caso 2">
+            </div>
+        </div>
+
+        <!-- CASO 3 -->
+        <div class="evidence-card">
+            <span class="case-badge">Caso 3</span>
+            <div class="evidence-title">Procedimiento Almacenado: Cambio Válido y Trazabilidad</div>
+            
+            <p><strong>Comando ejecutado:</strong> <code>CALL aplicar_ajuste_precio(1, 20.00);</code> (Ajuste de +20% a la pista TrackId = 1).</p>
+
+            <div class="evidence-instructions">
+                <strong>¿A qué tomarle captura?:</strong> Debe mostrarse la secuencia completa:
+                1) El SELECT del catálogo ANTES del cambio (incluyendo una pista testigo, ej. TrackId = 2).<br>
+                2) La llamada <code>CALL aplicar_ajuste_precio(1, 20.00);</code>.<br>
+                3) El SELECT del catálogo DESPUÉS del cambio (TrackId 1 cambió, TrackId 2 permanece intacto).<br>
+                4) El SELECT sobre <code>auditoria_precios_track</code> mostrando la nueva fila insertada automáticamente.
+            </div>
+
+            <!-- Grilla Antes y Después -->
+            <div class="data-comparison-grid">
+                <div class="data-box before">
+                    <h4>Estado ANTES del Cambio</h4>
+                    <p><strong>Pista 1:</strong> UnitPrice = <code>0.99</code></p>
+                    <p><strong>Pista 2 (Testigo):</strong> UnitPrice = <code>0.99</code></p>
+                    <p><strong>Total Filas Auditoría:</strong> <code>0</code></p>
+                </div>
+                <div class="data-box after">
+                    <h4>Estado DESPUÉS del Cambio</h4>
+                    <p><strong>Pista 1:</strong> UnitPrice = <code>1.19</code> (0.99 * 1.20 = 1.188 &rarr; 1.19)</p>
+                    <p><strong>Pista 2 (Testigo):</strong> UnitPrice = <code>0.99</code> (Sin alteraciones)</p>
+                    <p><strong>Auditoría:</strong> 1 fila registrada (Precio Ant: 0.99, Nuevo: 1.19, usuario: postgres)</p>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="result-box expected-box">
+                    <strong>Resultado Esperado:</strong> Únicamente el registro 1 cambia de precio; la pista testigo permanece inalterada y se genera exactamente una fila en la auditoría vía trigger.
+                </div>
+                <div class="result-box obtained-box">
+                    <strong>Resultado Obtenido:</strong><br>
+                    <span contenteditable="true">TrackId 1 actualizado a 1.19; TrackId 2 conservó 0.99. La tabla de auditoría registró el cambio con timestamp y usuario.</span>
+                </div>
+            </div>
+
+            <div class="photo-placeholder" onclick="triggerFileInput(this)">
+                <input type="file" class="file-input" accept="image/*" onchange="previewImage(this)">
+                <div class="photo-icon">📷</div>
+                <div class="photo-label">Haz clic aquí para adjuntar la Captura del Caso 3 (Estado Antes, CALL, Después y Auditoría)</div>
+                <div class="photo-sublabel">Puedes incluir un collage o una captura amplia de la consola con la secuencia</div>
+                <img class="photo-preview" alt="Evidencia Caso 3">
+            </div>
+        </div>
+
+        <!-- CASO 4 -->
+        <div class="evidence-card">
+            <span class="case-badge">Caso 4</span>
+            <div class="evidence-title">Procedimiento: Rechazo de Identificador Inexistente</div>
+            
+            <p><strong>Comando ejecutado:</strong> <code>CALL aplicar_ajuste_precio(999999, 10.00);</code></p>
+
+            <div class="evidence-instructions">
+                <strong>¿A qué tomarle captura?:</strong> Al error emitido en consola <em>"Producto no encontrado: No existe ninguna pista con identificador (TrackId = 999999)"</em> 
+                y al <code>SELECT * FROM auditoria_precios_track WHERE id_pista = 999999;</code> mostrando 0 filas afectadas.
+            </div>
+
+            <div class="results-section">
+                <div class="result-box expected-box">
+                    <strong>Resultado Esperado:</strong> Excepción controlada indicando que el producto no existe y ausencia total de modificaciones o inserciones de auditoría.
+                </div>
+                <div class="result-box obtained-box">
+                    <strong>Resultado Obtenido:</strong><br>
+                    <span contenteditable="true">El procedimiento abortó con mensaje de error descriptivo sin crear registros huérfanos en auditoría.</span>
+                </div>
+            </div>
+
+            <div class="photo-placeholder" onclick="triggerFileInput(this)">
+                <input type="file" class="file-input" accept="image/*" onchange="previewImage(this)">
+                <div class="photo-icon">📷</div>
+                <div class="photo-label">Haz clic aquí para adjuntar la Captura del Caso 4</div>
+                <div class="photo-sublabel">Muestra el mensaje de error de producto inexistente y la consulta vacía en auditoría</div>
+                <img class="photo-preview" alt="Evidencia Caso 4">
+            </div>
+        </div>
+
+        <!-- CASO 5 -->
+        <div class="evidence-card">
+            <span class="case-badge">Caso 5</span>
+            <div class="evidence-title">Procedimiento: Porcentaje Inválido y Ausencia de Cambios Parciales</div>
+            
+            <p><strong>Comando ejecutado:</strong> <code>CALL aplicar_ajuste_precio(2, 150.00);</code> (Porcentaje &gt; 100% sobre la pista 2).</p>
+
+            <div class="evidence-instructions">
+                <strong>¿A qué tomarle captura?:</strong> A la pantalla que evidencie el error arrojado por la función escalar al ser invocada desde el procedimiento, 
+                seguido de un <code>SELECT "TrackId", "UnitPrice" FROM "Track" WHERE "TrackId" = 2;</code> demostrando que el precio no sufrió cambios parciales.
+            </div>
+
+            <div class="data-comparison-grid">
+                <div class="data-box before">
+                    <h4>Estado ANTES de la llamada inválida</h4>
+                    <p><strong>Pista 2:</strong> UnitPrice = <code>0.99</code></p>
+                </div>
+                <div class="data-box after">
+                    <h4>Estado DESPUÉS del error provocado</h4>
+                    <p><strong>Pista 2:</strong> UnitPrice = <code>0.99</code> (Completamente inalterado)</p>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="result-box expected-box">
+                    <strong>Resultado Esperado:</strong> Error <code>numeric_value_out_of_range</code> indicando porcentaje fuera de rango [-50, 100]; el precio de la pista no se modifica.
+                </div>
+                <div class="result-box obtained-box">
+                    <strong>Resultado Obtenido:</strong><br>
+                    <span contenteditable="true">La llamada fue rechazada y la pista 2 conservó su precio íntegro sin alteraciones parciales.</span>
+                </div>
+            </div>
+
+            <div class="photo-placeholder" onclick="triggerFileInput(this)">
+                <input type="file" class="file-input" accept="image/*" onchange="previewImage(this)">
+                <div class="photo-icon">📷</div>
+                <div class="photo-label">Haz clic aquí para adjuntar la Captura del Caso 5</div>
+                <div class="photo-sublabel">Error de porcentaje inválido y verificación del precio intacto</div>
+                <img class="photo-preview" alt="Evidencia Caso 5">
+            </div>
+        </div>
+
+        <!-- CASO 6 -->
+        <div class="evidence-card">
+            <span class="case-badge">Caso 6</span>
+            <div class="evidence-title">Trigger: Actualización Directa sin CALL (UPDATE DML)</div>
+            
+            <p><strong>Comando ejecutado:</strong> <code>UPDATE "Track" SET "UnitPrice" = 1.50 WHERE "TrackId" = 2;</code></p>
+
+            <div class="evidence-instructions">
+                <strong>¿A qué tomarle captura?:</strong> A la ejecución de la sentencia SQL UPDATE directa en el catálogo (sin usar el procedimiento almacenado) 
+                y a la consulta inmediata en <code>auditoria_precios_track</code> evidenciando que el trigger registró el cambio automáticamente.
+            </div>
+
+            <div class="data-comparison-grid">
+                <div class="data-box before">
+                    <h4>Precio Anterior (OLD)</h4>
+                    <p><strong>Pista 2:</strong> UnitPrice = <code>0.99</code></p>
+                </div>
+                <div class="data-box after">
+                    <h4>Precio Nuevo (NEW)</h4>
+                    <p><strong>Pista 2:</strong> UnitPrice = <code>1.50</code></p>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="result-box expected-box">
+                    <strong>Resultado Esperado:</strong> Inserción autónoma de una fila de auditoría para TrackId=2 con precio anterior 0.99 y nuevo 1.50.
+                </div>
+                <div class="result-box obtained-box">
+                    <strong>Resultado Obtenido:</strong><br>
+                    <span contenteditable="true">El trigger actuó de inmediato al UPDATE directo, garantizando la auditoría sin intervención del procedimiento.</span>
+                </div>
+            </div>
+
+            <div class="photo-placeholder" onclick="triggerFileInput(this)">
+                <input type="file" class="file-input" accept="image/*" onchange="previewImage(this)">
+                <div class="photo-icon">📷</div>
+                <div class="photo-label">Haz clic aquí para adjuntar la Captura del Caso 6</div>
+                <div class="photo-sublabel">UPDATE directo y fila resultante en la tabla de auditoría</div>
+                <img class="photo-preview" alt="Evidencia Caso 6">
+            </div>
+        </div>
+
+        <!-- CASO 7 -->
+        <div class="evidence-card">
+            <span class="case-badge">Caso 7</span>
+            <div class="evidence-title">Trigger: UPDATE Asignando el Mismo Precio (Sin Cambio Real)</div>
+            
+            <p><strong>Comando ejecutado:</strong> <code>UPDATE "Track" SET "UnitPrice" = 1.50 WHERE "TrackId" = 2;</code> (El precio ya era 1.50).</p>
+
+            <div class="evidence-instructions">
+                <strong>¿A qué tomarle captura?:</strong> A la ejecución secuencial de:
+                1) <code>SELECT COUNT(*) FROM auditoria_precios_track;</code> (Conteo ANTES).<br>
+                2) La sentencia <code>UPDATE "Track" SET "UnitPrice" = 1.50 WHERE "TrackId" = 2;</code>.<br>
+                3) <code>SELECT COUNT(*) FROM auditoria_precios_track;</code> (Conteo DESPUÉS). Ambos conteos deben ser idénticos.
+            </div>
+
+            <div class="data-comparison-grid">
+                <div class="data-box before">
+                    <h4>Conteo de Auditoría ANTES</h4>
+                    <p>Total registros: <code>N</code> (ej. 2)</p>
+                </div>
+                <div class="data-box after">
+                    <h4>Conteo de Auditoría DESPUÉS</h4>
+                    <p>Total registros: <code>N</code> (Mismo número, sin incremento)</p>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="result-box expected-box">
+                    <strong>Resultado Esperado:</strong> La condición <code>IS DISTINCT FROM</code> evalúa a falso, por lo que NO se genera ninguna fila de auditoría nueva.
+                </div>
+                <div class="result-box obtained-box">
+                    <strong>Resultado Obtenido:</strong><br>
+                    <span contenteditable="true">El conteo permaneció invariante antes y después de la ejecución del UPDATE con precio idéntico.</span>
+                </div>
+            </div>
+
+            <div class="photo-placeholder" onclick="triggerFileInput(this)">
+                <input type="file" class="file-input" accept="image/*" onchange="previewImage(this)">
+                <div class="photo-icon">📷</div>
+                <div class="photo-label">Haz clic aquí para adjuntar la Captura del Caso 7</div>
+                <div class="photo-sublabel">Conteo de auditoría antes y después mostrando que no aumentó</div>
+                <img class="photo-preview" alt="Evidencia Caso 7">
+            </div>
+        </div>
+
+        <!-- CASO 8 -->
+        <div class="evidence-card">
+            <span class="case-badge">Caso 8</span>
+            <div class="evidence-title">Integridad Transaccional: Reversión Completa con ROLLBACK</div>
+            
+            <p><strong>Secuencia ejecutada:</strong> <code>BEGIN; UPDATE ... ver datos ... ROLLBACK; ver datos finales</code> sobre la pista 3.</p>
+
+            <div class="evidence-instructions">
+                <strong>¿A qué tomarle captura?:</strong> A la consola mostrando:
+                1) <code>BEGIN;</code><br>
+                2) Modificación temporal de la pista 3 y consulta dentro de la transacción activa (se ve el precio cambiado y la auditoría).<br>
+                3) Comando <code>ROLLBACK;</code>.<br>
+                4) Consulta inmediata fuera de la transacción comprobando que el precio regresó a su valor previo y la fila de auditoría se revirtió por completo.
+            </div>
+
+            <div class="data-comparison-grid">
+                <div class="data-box before">
+                    <h4>Durante la Transacción (Dentro de BEGIN)</h4>
+                    <p><strong>Pista 3:</strong> UnitPrice modificado a <code>2.99</code></p>
+                    <p><strong>Auditoría sesión:</strong> Fila registrada provisionalmente</p>
+                </div>
+                <div class="data-box after">
+                    <h4>Tras ejecutar ROLLBACK</h4>
+                    <p><strong>Pista 3:</strong> UnitPrice restaurado a <code>0.99</code></p>
+                    <p><strong>Auditoría sesión:</strong> Fila eliminada automáticamente</p>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="result-box expected-box">
+                    <strong>Resultado Esperado:</strong> Tanto el cambio de precio como la fila de auditoría son revertidos por completo al cancelar la transacción con ROLLBACK (Propiedades ACID).
+                </div>
+                <div class="result-box obtained-box">
+                    <strong>Resultado Obtenido:</strong><br>
+                    <span contenteditable="true">El ROLLBACK revirtió la modificación de la pista y la tupla de auditoría de manera atómica y consistente.</span>
+                </div>
+            </div>
+
+            <div class="photo-placeholder" onclick="triggerFileInput(this)">
+                <input type="file" class="file-input" accept="image/*" onchange="previewImage(this)">
+                <div class="photo-icon">📷</div>
+                <div class="photo-label">Haz clic aquí para adjuntar la Captura del Caso 8 (Transaccionalidad)</div>
+                <div class="photo-sublabel">Secuencia completa BEGIN &rarr; UPDATE &rarr; ROLLBACK &rarr; Verificación</div>
+                <img class="photo-preview" alt="Evidencia Caso 8">
+            </div>
+        </div>
+    </section>
+
+    <!-- Requerimiento 3: Conclusiones Técnicas -->
+    <section>
+        <h2>🎓 5. Conclusiones Técnicas y Fundamentación</h2>
+
+        <div class="callout info">
+            <h3>Diferencias Conceptuales y Operativas: Función Escalar, Procedimiento y Disparador</h3>
+            <p>
+                Dentro del motor PostgreSQL, cada uno de estos tres objetos cumple un rol arquitectónico específico y no deben confundirse:
+            </p>
+            <ul>
+                <li>
+                    <strong>Función Escalar (<code>FUNCTION ... RETURNS NUMERIC</code>):</strong> Es un objeto puramente determinista y computable. 
+                    Recibe parámetros escalares y retorna obligatoriamente un único valor atómico. No modifica el estado de la base de datos (no ejecuta DML), 
+                    lo que permite invocarla libremente dentro de consultas <code>SELECT</code>, expresiones <code>WHERE</code> o fórmulas de cálculo 
+                    sin provocar efectos colaterales.
+                </li>
+                <li>
+                    <strong>Procedimiento Almacenado (<code>CREATE PROCEDURE ... CALL</code>):</strong> Diseñado para orquestar lógica de negocio y 
+                    procesos que implican efectos colaterales (inserciones, actualizaciones o eliminaciones en tablas). No devuelve un valor mediante <code>RETURN</code>, 
+                    sino que se ejecuta mediante la instrucción <code>CALL</code>. Tiene la capacidad de gestionar límites de transacciones autónomas 
+                    y consolidar reglas de validación previas a la persistencia.
+                </li>
+                <li>
+                    <strong>Disparador (<code>TRIGGER</code> y su función de soporte):</strong> Es un mecanismo reactivo e implícito. No es invocado 
+                    directamente por un usuario o aplicación, sino que el propio motor de PostgreSQL lo ejecuta de manera automática ante la ocurrencia 
+                    de un evento del ciclo de vida de los datos (en este caso, <code>AFTER UPDATE OF "UnitPrice"</code>). Su propósito es salvaguardar 
+                    reglas de integridad y trazabilidad que jamás deben poder ser eludidas.
+                </li>
+            </ul>
+        </div>
+
+        <div class="callout success">
+            <h3>¿Por qué la auditoría NO depende de la voluntad o memoria del usuario?</h3>
+            <p>
+                Al delegar la inserción de auditoría a un <strong>Trigger a nivel de base de datos</strong> en lugar de programarlo manualmente 
+                en el procedimiento almacenado o en el código del software cliente:
+            </p>
+            <ol>
+                <li>
+                    <strong>Garantía Ineludible (Mecanismo Centralizado):</strong> Cualquier vía de modificación (sea una aplicación web, un microservicio, 
+                    el procedimiento almacenado <code>aplicar_ajuste_precio</code>, un script administrativo o una consulta <code>UPDATE</code> manual ejecutada 
+                    por un DBA en consola) activará forzosamente el trigger. El desarrollador o usuario no puede "olvidar" auditar el cambio.
+                </li>
+                <li>
+                    <strong>Atomicidad e Integridad ACID:</strong> La acción del trigger forma parte intrínseca de la misma transacción que modifica 
+                    el catálogo. Si la actualización se revierte (por un error o <code>ROLLBACK</code>), la auditoría se revierte conjuntamente. 
+                    Nunca existirán auditorías ficticias ni modificaciones no auditadas.
+                </li>
+                <li>
+                    <strong>Separación de Responsabilidades:</strong> El procedimiento almacenado se enfoca en la orquestación del negocio (verificar catálogo 
+                    y llamar la función matemática), mientras que la persistencia probatoria y de cumplimiento normativo queda blindada en el nivel más bajo: el motor relacional.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Checklist Final -->
+    <section>
+        <h2>✅ 6. Lista de Verificación (Checklist) para Entrega Final</h2>
+        <ul class="checklist">
+            <li class="checklist-item">
+                <input type="checkbox" id="chk1">
+                <label for="chk1"><strong>Copia de la BD Chinook creada:</strong> Se verificó que se está trabajando sobre <code>chinook_practica</code> sin alterar la base original.</label>
+            </li>
+            <li class="checklist-item">
+                <input type="checkbox" id="chk2">
+                <label for="chk2"><strong>Archivos SQL ordenados en carpeta <code>sql/</code>:</strong> Se tienen <code>01_preparacion.sql</code>, <code>02_funcion_escalar.sql</code>, <code>03_procedimiento.sql</code>, <code>04_trigger_y_funcion.sql</code> y <code>05_pruebas.sql</code>.</label>
+            </li>
+            <li class="checklist-item">
+                <input type="checkbox" id="chk3">
+                <label for="chk3"><strong>Función escalar reutilizada:</strong> El procedimiento almacenado llama a <code>calcular_precio_ajustado()</code> y no duplica la fórmula.</label>
+            </li>
+            <li class="checklist-item">
+                <input type="checkbox" id="chk4">
+                <label for="chk4"><strong>Auditoría limpia y automática:</strong> El procedimiento NO hace INSERT en la tabla de auditoría; el trigger lo hace con <code>IS DISTINCT FROM</code>.</label>
+            </li>
+            <li class="checklist-item">
+                <input type="checkbox" id="chk5">
+                <label for="chk5"><strong>8 Casos de prueba documentados con capturas:</strong> Cada caso cuenta con su explicación, datos antes/después y captura de consola nítida.</label>
+            </li>
+            <li class="checklist-item">
+                <input type="checkbox" id="chk6">
+                <label for="chk6"><strong>README.md completo:</strong> Incluye versión de PostgreSQL, forma de conexión, orden de scripts y enlace a la fuente oficial de Chinook.</label>
+            </li>
+            <li class="checklist-item">
+                <input type="checkbox" id="chk7">
+                <label for="chk7"><strong>Repositorio GitHub público:</strong> Todo el código subido sin contraseñas ni archivos privados.</label>
+            </li>
+            <li class="checklist-item">
+                <input type="checkbox" id="chk8">
+                <label for="chk8"><strong>Generación del PDF final:</strong> El documento ha sido exportado a PDF asegurando que el enlace al repositorio y las capturas sean completamente legibles.</label>
+            </li>
+        </ul>
+    </section>
+
+</div>
+
+<script>
+    // Función para copiar código SQL al portapapeles
+    function copyCode(button) {
+        const pre = button.parentElement.nextElementSibling;
+        const code = pre.querySelector('code').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            const originalText = button.innerText;
+            button.innerText = '¡Copiado!';
+            button.style.backgroundColor = '#16a34a';
+            setTimeout(() => {
+                button.innerText = originalText;
+                button.style.backgroundColor = '';
+            }, 2000);
+        });
+    }
+
+    // Funciones interactivas para cargar y visualizar imágenes en los placeholders
+    function triggerFileInput(placeholder) {
+        const input = placeholder.querySelector('.file-input');
+        input.click();
+    }
+
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            const placeholder = input.parentElement;
+            const preview = placeholder.querySelector('.photo-preview');
+            const icon = placeholder.querySelector('.photo-icon');
+            const label = placeholder.querySelector('.photo-label');
+            const sublabel = placeholder.querySelector('.photo-sublabel');
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+                if (icon) icon.style.display = 'none';
+                if (label) label.innerText = 'Foto adjuntada (Haz clic para cambiar)';
+                if (sublabel) sublabel.innerText = input.files[0].name;
+                placeholder.style.borderStyle = 'solid';
+                placeholder.style.borderColor = '#10b981';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+</body>
+</html>
