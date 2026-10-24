@@ -3,6 +3,7 @@
 **Estudiante:** Robert Gameros  
 **Año Lectivo:** 2026  
 **Repositorio Oficial en GitHub:** [https://github.com/RobertGameros/S15-Procedimientos-almacenados-funciones-escalares-y-triggers.git](https://github.com/RobertGameros/S15-Procedimientos-almacenados-funciones-escalares-y-triggers.git)  
+**Informe Completo de Evidencias (PDF):** [📄 Descargar Informe_Tarea7_Robert_Gameros.pdf](Informe_Tarea7_Robert_Gameros.pdf)  
 **Motor de Base de Datos:** PostgreSQL 18.6 (Desplegado con Docker Compose)  
 **Entorno de Trabajo y Cliente SQL:** JetBrains DataGrip  
 **Base de Datos Base:** [Chinook Database](https://github.com/lerocha/chinook-database) (Script fuente: `Chinook_PostgreSql.sql`)  
